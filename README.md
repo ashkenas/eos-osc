@@ -1,0 +1,2 @@
+# EOS OSC
+[ETC](https://www.etcconnect.com/) charges $50 for an app on a proprietary protocol that barely works (or sometimes just doesn't). That's, quite frankly, annoying. Hence, this open source work-in-progress tool for controlling EOS software from a remote device (like a smart phone or tablet) via the web (no apps).
