@@ -27,20 +27,11 @@ osc.on('/eos/out/get/patch/*/list/*', message => {
     channels[channel] = message.args[7];
 });
 
-osc.on('*', message => {
-    const p = document.createElement('p');
-    p.innerText = message.address + JSON.stringify(message.args);
-    output.append(p); 
+osc.on('/eos/out/active/wheel/*', message => {
+    if (!message.args[0].toLowerCase().startsWith('intens')) return;
+    channels[message.args[1]] = message.args[2];
 });
 
 osc.on('error', (err) => console.error(err));
 
 osc.open();
-
-send.addEventListener('click', (e) => {
-    osc.send(new OSC.Message(cmd.value));
-});
-
-clear.addEventListener('click', (e) => {
-    output.innerHTML = '';
-});
