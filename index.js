@@ -1,7 +1,8 @@
 const path = require('path');
 const os = require('os');
-const express = require('express');
 const OSC = require('osc-js');
+const express = require('express');
+const exphbs = require('express-handlebars');
 
 let addr;
 for (const interf of Object.values(os.networkInterfaces())) {
@@ -51,11 +52,27 @@ const static = express.static(path.join(__dirname, '/public'));
 app.use(static);
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'))
+    res.render('channels')
+});
+
+app.get('/console', (req, res) => {
+    res.render('console')
 });
 
 app.get('/osc.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'node_modules/osc-js/lib/osc.min.js'))
 });
+
+app.get('*', (req, res) => {
+    res.render('error', {
+        status: 404,
+        message: 'Not found'
+    });
+})
+
+app.engine('handlebars', exphbs.engine({
+    defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
 
 app.listen(80, () => console.log('Server online at http://localhost/.'));
