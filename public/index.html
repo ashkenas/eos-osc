@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>OSC Console</title>
+        <script src="/osc.js"></script>
+    </head>
+    <body>
+        <div id="input">
+            <input id="cmd" type="text">
+            <input id="send" type="submit" value="send">
+        </div>
+        <div id="output">
+
+        </div>
+        <script type="text/javascript">
+            const osc = new OSC();
+
+            osc.on('*', message => {
+                const p = document.createElement('p');
+                p.innerText = message.address + JSON.stringify(message.args);
+                output.append(p); 
+            });
+
+            osc.open();
+
+            send.addEventListener('click', (e) => {
+                osc.send(new OSC.Message(cmd.value));
+            });
+        </script>
+    </body>
+</html>
