@@ -34,13 +34,11 @@ const osc = new OSC({
             port: 8080
         }
     })
-})
-
-osc.on('*', message => console.log(message));
+});
 
 osc.on('open', () => {
     console.log(`OSC server running on ${addr}:4704`)
-    osc.send(new OSC.Message('/eos/subscribe',1));
+    osc.send(new OSC.Message('/eos/subscribe', 1));
 });
 
 osc.on('error', (e) => console.error(e));
