@@ -8,6 +8,7 @@ html, body {
     margin: 0;
     box-sizing: border-box;
     background-color: #000000;
+    color: #9c92a0;
 }
 
 #channels {
@@ -24,22 +25,46 @@ html, body {
     margin: 0 8px 8px 0;
 }
 
+#channels > div.active {
+    border: 2px solid #fee22b;
+}
+
+#channels > div.active > p:first-of-type {
+    border-bottom: 1px solid #fee22b;
+}
+
 #channels > div > p {
     border-radius: .25rem .25rem 0 0;
     margin: 0;
     text-align: center;
+    padding: .25rem 0;
 }
 
 #channels > div > p:first-of-type {
     color: #9c92a0;
     background-color: #141414;
     border-bottom: 1px solid #514b5c;
-    padding: 0 .25rem;
 }
 
 #channels > div > p:not(:first-of-type) {
     color: #a1347c;
-    padding: 0 .5rem;
+}
+
+#control {
+    display: flex;
+}
+
+#control > p {
+    margin: .25rem 0;
+}
+
+#control > input {
+    background-color: black;
+    border: 1px solid #514b5c;
+    margin: 0 .25rem;
+    color: #a1347c;
+    font-size: 1rem;
+    width: 3rem;
 }
 
 *, *::after, *::before {

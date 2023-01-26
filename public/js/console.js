@@ -21,7 +21,7 @@ osc.on('*', message => {
     showMessage(message.address + JSON.stringify(message.args));
 });
 
-osc.on('error', (err) => console.error(err));
+osc.on('error', (err) => showMessage(err.message));
 
 osc.on('close', () => {
     showMessage('Connection closed.');
@@ -32,7 +32,10 @@ osc.open();
 
 send.addEventListener('click', (e) => {
     if (closed) return alert('No active connection to send messages.');
-    osc.send(new OSC.Message(cmd.value));
+    let args = cmd.value.split(' ');
+    const addr = args.shift();
+    args = args.map((arg) => isNaN(+arg) ? arg : +arg);
+    osc.send(new OSC.Message(addr, ...args));
 });
 
 clear.addEventListener('click', (e) => {
