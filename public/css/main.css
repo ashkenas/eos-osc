@@ -58,6 +58,10 @@ html, body {
     margin: .25rem 0;
 }
 
+#control > button {
+    
+}
+
 #control > input {
     background-color: black;
     border: 1px solid #514b5c;

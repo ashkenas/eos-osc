@@ -47,12 +47,12 @@ osc.on('error', (err) => console.error(err));
 osc.open();
 
 const channelInput = document.getElementById('channel-input');
-channelInput.addEventListener('change', () => {
+channelInput.addEventListener('input', () => {
     if (lastSelected !== null)
         channelElements[lastSelected].classList.remove('active');
 
     for (let i = 0; i < channelElements.length; i++) {
-        if (channelInput.value !== +channelElements[i].getAttribute('data-chan'))
+        if (channelInput.value !== channelElements[i].getAttribute('data-chan'))
             continue;
 
         channelElements[i].classList.add('active');
@@ -85,7 +85,7 @@ const insertChannel = (chan, chanVal) => {
     el.setAttribute('data-chan', chan);
     el.addEventListener('click', () => {
         channelInput.value = chan;
-        channelInput.dispatchEvent(new Event('change'));
+        channelInput.dispatchEvent(new Event('input'));
     });
     el.append(name, val);
 
