@@ -26,11 +26,11 @@ html, body {
 }
 
 #channels > div.active {
-    border: 2px solid #fee22b;
+    border: 2px solid #a77a1c;
 }
 
 #channels > div.active > p:first-of-type {
-    border-bottom: 1px solid #fee22b;
+    border-bottom: 1px solid #a77a1c;
 }
 
 #channels > div > p {
@@ -59,7 +59,13 @@ html, body {
 }
 
 #control > button {
-    
+    border: 2px solid #a77a1c;
+    color: #9c92a0;
+    background-color: #141414;
+}
+
+#control > button:hover  {
+    background-color: #212121;
 }
 
 #control > input {

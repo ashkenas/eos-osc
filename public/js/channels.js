@@ -1,7 +1,7 @@
 const channels = {};
 const channelElements = [];
 const channelsContainer = document.getElementById('channels');
-let activeChannel = null;
+let activeChannel = 0;
 let lastSelected = null;
 
 const channelPattern = /patch\/([0-9]*)\//i;
@@ -38,7 +38,7 @@ osc.on('/eos/out/active/chan', message => {
 });
 
 osc.on('/eos/out/active/wheel/1', message => {
-    if(activeChannel === null) return;
+    if(!channels[activeChannel]) return;
     updateChannel(activeChannel, message.args[2]);
 });
 
